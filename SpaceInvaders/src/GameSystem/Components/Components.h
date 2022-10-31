@@ -1,0 +1,10 @@
+#pragma once
+#include "../VMath/VecXX.h"
+#include "../VMath/Matrix4f.h"
+#include "../Core/Rendering/Material.h"
+#include "../Core/Rendering/Geometry/RectGeometry.h"
+#include "../ECS.h"
+#include "../SystemManager.h"
+#include "../Util/Profiler.h"
+#include "../VMath/SIMath.h"
+#include "../Prefab/EntityPrefab.h"

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5d86d2a8-99fe-49e4-bdf1-cc3ffb23d211}</ProjectGuid>
+    <RootNamespace>SpaceInvaders</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <SourcePath>$(VC_SourcePath);$(SolutionDir)3rd_party\glad\src</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <SourcePath>$(VC_SourcePath);$(SolutionDir)3rd_party\glad\src</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rd_party\glad\include;$(SolutionDir)3rd_party\glm\glm;$(SolutionDir)3rd_party\stb_image;$(ProjDir)src\pch;$(SolutionDir)3rd_party\SDL2-2.0.20\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rd_party\SDL2-2.0.20\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>Xcopy /E /I  "$(ProjectDir)resources" "$(TargetDir)resources"
+Xcopy "$(SolutionDir)3rd_party\SDL2-2.0.20\lib\x64\SDL2.dll" "$(TargetDir)"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rmdir /s/q $(TargetDir)</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rd_party\glad\include;$(SolutionDir)3rd_party\glm\glm;$(SolutionDir)3rd_party\stb_image;$(ProjDir)src\pch;$(SolutionDir)3rd_party\SDL2-2.0.20\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rd_party\SDL2-2.0.20\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>Xcopy /E /I  "$(ProjectDir)resources" "$(TargetDir)resources"
+Xcopy "$(SolutionDir)3rd_party\SDL2-2.0.20\lib\x64\SDL2.dll" "$(TargetDir)"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rmdir /s/q $(TargetDir)</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Core\Rendering\Effects\Bloom.cpp" />
+    <ClCompile Include="src\Core\UI\UIPanel.cpp" />
+    <ClCompile Include="src\GameSystem\Components\Bomber.cpp" />
+    <ClCompile Include="src\GameSystem\Components\EnemySpawner.cpp" />
+    <ClCompile Include="src\GameSystem\Components\ParticleSystem.cpp" />
+    <ClCompile Include="src\GameSystem\Components\PlayerController.cpp" />
+    <ClCompile Include="src\GameSystem\Components\Projectile.cpp" />
+    <ClCompile Include="src\GameSystem\Components\RandomStrafer.cpp" />
+    <ClCompile Include="src\GameSystem\Game\Game.cpp" />
+    <ClCompile Include="src\Resources\ConfigLoader.cpp" />
+    <ClCompile Include="src\Core\Rendering\Helpers\Gizmos.cpp" />
+    <ClCompile Include="src\Core\Input\InputSystem.cpp" />
+    <ClCompile Include="src\GameSystem\Sandbox.cpp" />
+    <ClCompile Include="src\Core\Rendering\Geometry\BufferGeometry.cpp" />
+    <ClCompile Include="src\Core\Rendering\Geometry\LineGeometry.cpp" />
+    <ClCompile Include="src\VMath\Polyline.cpp" />
+    <ClCompile Include="src\Core\Rendering\Material.cpp" />
+    <ClCompile Include="src\Core\Rendering\Geometry\RectGeometry.cpp" />
+    <ClCompile Include="src\Core\Random\Random.cpp" />
+    <ClCompile Include="src\Core\Rendering\Buffers\IndexBuffer.cpp" />
+    <ClCompile Include="src\Resources\ShaderLoader.cpp" />
+    <ClCompile Include="src\Core\Rendering\Renderer.cpp" />
+    <ClCompile Include="src\Core\Rendering\Shader.cpp" />
+    <ClCompile Include="src\Core\Engine.cpp" />
+    <ClCompile Include="src\Core\Rendering\glad.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\SpaceInvaders.cpp" />
+    <ClCompile Include="src\pch\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Core\Window.cpp" />
+    <ClCompile Include="src\Core\Rendering\Buffers\VertexBuffer.cpp" />
+    <ClCompile Include="src\Core\Threads\ThreadPool.cpp" />
+    <ClCompile Include="src\Core\Rendering\Buffers\VertexArray.cpp" />
+    <ClCompile Include="src\Core\Rendering\Texture2D.cpp" />
+    <ClCompile Include="src\Resources\TextureLoader.cpp" />
+    <ClCompile Include="src\Core\Rendering\Geometry\TextGeometry.cpp" />
+    <ClCompile Include="src\Core\UI\UISystem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Core\Input\KeyCodes.h" />
+    <ClInclude Include="src\Core\Rendering\Effects\Bloom.h" />
+    <ClInclude Include="src\GameSystem\Components\Bomber.h" />
+    <ClInclude Include="src\GameSystem\Components\Explosion.h" />
+    <ClInclude Include="src\Core\Rendering\FrameBuffer.h" />
+    <ClInclude Include="src\Core\UI\UIElements.h" />
+    <ClInclude Include="src\Core\UI\UIPanel.h" />
+    <ClInclude Include="src\GameSystem\Components\EnemySpawner.h" />
+    <ClInclude Include="src\GameSystem\Components\HeatSeeker.h" />
+    <ClInclude Include="src\GameSystem\Components\Physics\AABB.h" />
+    <ClInclude Include="src\GameSystem\Components\Trail.h" />
+    <ClInclude Include="src\GameSystem\Game\Game.h" />
+    <ClInclude Include="src\Resources\ConfigLoader.h" />
+    <ClInclude Include="src\Core\Rendering\Helpers\Gizmos.h" />
+    <ClInclude Include="src\Core\Input\InputSystem.h" />
+    <ClInclude Include="src\Core\Rendering\GL_Debugger.h" />
+    <ClInclude Include="src\Core\System.h" />
+    <ClInclude Include="src\GameSystem\ComponentArray.h" />
+    <ClInclude Include="src\GameSystem\ComponentManager.h" />
+    <ClInclude Include="src\GameSystem\Components\ALL_COMPONENTS.h" />
+    <ClInclude Include="src\GameSystem\Components\BeachBall.h" />
+    <ClInclude Include="src\GameSystem\Components\Health.h" />
+    <ClInclude Include="src\GameSystem\Components\ParticleSystem.h" />
+    <ClInclude Include="src\GameSystem\Components\Physics\Collider.h" />
+    <ClInclude Include="src\GameSystem\Components\Physics\CollisionInfo.h" />
+    <ClInclude Include="src\GameSystem\Components\Physics\PhysicsSystem.h" />
+    <ClInclude Include="src\GameSystem\Components\Components.h" />
+    <ClInclude Include="src\GameSystem\Components\PlayerController.h" />
+    <ClInclude Include="src\GameSystem\Components\Projectile.h" />
+    <ClInclude Include="src\GameSystem\Components\RandomStrafer.h" />
+    <ClInclude Include="src\GameSystem\Components\SelfDestruct.h" />
+    <ClInclude Include="src\GameSystem\Components\SystemTemplate.h" />
+    <ClInclude Include="src\GameSystem\Components\TextSprite.h" />
+    <ClInclude Include="src\GameSystem\Components\Transform.h" />
+    <ClInclude Include="src\GameSystem\Database.h" />
+    <ClInclude Include="src\GameSystem\ECS.h" />
+    <ClInclude Include="src\GameSystem\ECSCommon.h" />
+    <ClInclude Include="src\GameSystem\ECSMessage.h" />
+    <ClInclude Include="src\GameSystem\Prefab\EntityPrefab.h" />
+    <ClInclude Include="src\GameSystem\Sandbox.h" />
+    <ClInclude Include="src\Core\Rendering\Geometry\BufferGeometry.h" />
+    <ClInclude Include="src\Core\Rendering\Buffers\VertexFormat.h" />
+    <ClInclude Include="src\Core\Rendering\Buffers\VertexLayout.h" />
+    <ClInclude Include="src\Core\Rendering\Geometry\LineGeometry.h" />
+    <ClInclude Include="src\GameSystem\Component.h" />
+    <ClInclude Include="src\GameSystem\Actor.h" />
+    <ClInclude Include="src\GameSystem\Scene.h" />
+    <ClInclude Include="src\GameSystem\Entity.h" />
+    <ClInclude Include="src\GameSystem\ECSSystem.h" />
+    <ClInclude Include="src\GameSystem\SystemManager.h" />
+    <ClInclude Include="src\Resources\Image2D.h" />
+    <ClInclude Include="src\Util\TickTimer.h" />
+    <ClInclude Include="src\VMath\Polyline.h" />
+    <ClInclude Include="src\Core\Rendering\Material.h" />
+    <ClInclude Include="src\Core\Rendering\Geometry\RectGeometry.h" />
+    <ClInclude Include="src\Core\Random\Random.h" />
+    <ClInclude Include="src\Core\Rendering\Buffers\IndexBuffer.h" />
+    <ClInclude Include="src\Util\bimap.h" />
+    <ClInclude Include="src\Util\MultiMap.h" />
+    <ClInclude Include="src\Util\Profiler.h" />
+    <ClInclude Include="src\Resources\ShaderLoader.h" />
+    <ClInclude Include="src\Core\Rendering\Renderer.h" />
+    <ClInclude Include="src\Core\Rendering\Shader.h" />
+    <ClInclude Include="src\Core\Core.h" />
+    <ClInclude Include="src\Core\Engine.h" />
+    <ClInclude Include="src\pch\pch.h" />
+    <ClInclude Include="src\VMath\Arithmetic.h" />
+    <ClInclude Include="src\VMath\Matrix4f.h" />
+    <ClInclude Include="src\VMath\SIMath.h" />
+    <ClInclude Include="src\VMath\VecXX.h" />
+    <ClInclude Include="src\Core\Window.h" />
+    <ClInclude Include="src\VMath\VXA.h" />
+    <ClInclude Include="src\Core\Rendering\Buffers\VertexBuffer.h" />
+    <ClInclude Include="src\Core\Threads\ThreadPool.h" />
+    <ClInclude Include="src\Core\Rendering\Buffers\VertexArray.h" />
+    <ClInclude Include="src\Core\Rendering\Texture2D.h" />
+    <ClInclude Include="src\Resources\TextureLoader.h" />
+    <ClInclude Include="src\Core\Rendering\Geometry\TextGeometry.h" />
+    <ClInclude Include="src\Core\UI\UISystem.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

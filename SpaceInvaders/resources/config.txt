@@ -1,0 +1,11 @@
+text-symbolx=15
+text-offset=(0.01, 0.71)
+text-size=(0.061, 0.15)
+player1-left=a
+player1-right=d
+player1-primary=lshift
+player1-secondary=space
+player2-left=left
+player2-right=right
+player2-primary=rctrl
+player2-secondary=up
